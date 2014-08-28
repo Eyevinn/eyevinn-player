@@ -1,0 +1,16 @@
+{
+  "name": "eyevinn-player",
+  "version": "0.0.1",
+  "description": "Video player to test stream quality",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jonas Birme",
+  "dependencies": {
+    "throttle": ">= 1.0.3",
+    "url": ">= 0.10.1",
+    "express": "~4.0.0"
+  },
+  "license": "MIT"
+}
