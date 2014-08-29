@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Eyevinn Player</title>
+    <link href="node_modules/video.js/dist/video-js/video-js.css" rel="stylesheet"> 
+    <link href="css/tube.css" rel="stylesheet"> 
+    <script src="main.js"></script>
+
+    <script src="node_modules/video.js/dist/video-js/video.js"></script>
+    <script src="node_modules/videojs-contrib-media-sources/src/videojs-media-sources.js"></script>
+    <script src="node_modules/videojs-contrib-hls/src/videojs-hls.js"></script>
+    
+    <script src="node_modules/videojs-contrib-hls/src/xhr.js"></script>
+    <script src="node_modules/videojs-contrib-hls/src/flv-tag.js"></script>
+    <script src="node_modules/videojs-contrib-hls/src/exp-golomb.js"></script>
+    <script src="node_modules/videojs-contrib-hls/src/h264-stream.js"></script>
+    <script src="node_modules/videojs-contrib-hls/src/aac-stream.js"></script>
+    <script src="node_modules/videojs-contrib-hls/src/segment-parser.js"></script>
+
+    <script src="node_modules/videojs-contrib-hls/src/stream.js"></script>
+    <script src="node_modules/videojs-contrib-hls/src/m3u8/m3u8-parser.js"></script>
+    <script src="node_modules/videojs-contrib-hls/src/playlist-loader.js"></script>
+
+    <script src="node_modules/pkcs7/dist/pkcs7.unpad.js"></script>
+    <script src="node_modules/videojs-contrib-hls/src/decrypter.js"></script>
+    <script src="node_modules/videojs-contrib-hls/src/bin-utils.js"></script>
+        
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .info {
+      background-color: #eee;
+      border: thin solid #333;
+      border-radius: 3px;
+      padding: 0 5px;
+      margin: 20px 0;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="videocontainer">
+      <video id="video" class="video-js vjs-default-skin tube-css" height="300" width="600" controls>
+        <source src="http://lo-wowza01.cloudapp.net:1935/vod/smil:Lonsamhet/playlist.m3u8" type="application/x-mpegURL">
+      </video>
+    </div>
+    <div id="playercontrols">
+      <form>
+        <input type="text" size="90" name="streamsrc" value="http://lo-wowza01.cloudapp.net:1935/vod/smil:Lonsamhet/playlist.m3u8"></input>
+        <input type="submit" value="Load"></input>
+      </form>
+    </div>
+    <script>
+      videojs.options.flash.swf = 'node_modules/video.js/dist/video-js/video-js.swf';
+      // initialize the player
+      var player = videojs('video');
+      player.play();
+    </script>
+  </body>
+</html>
