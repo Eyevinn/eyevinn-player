@@ -4,6 +4,7 @@
   "description": "Video player to test stream quality",
   "main": "app://host/index.html",
   "scripts": {
+    "start": "nodewebkit",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "window": {
@@ -21,7 +22,8 @@
     "pkcs7": ">= 0.2.2",
     "video.js": ">= 4.7.3",
     "videojs-contrib-media-sources": ">= 0.3.0",
-    "videojs-contrib-hls": ">= 0.8.4"
+    "videojs-contrib-hls": ">= 0.8.4",
+    "nodewebkit": ">= 0.10.2"
   },
   "license": "MIT"
 }
