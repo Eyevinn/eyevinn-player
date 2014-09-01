@@ -23,7 +23,9 @@
     "video.js": ">= 4.7.3",
     "videojs-contrib-media-sources": ">= 0.3.0",
     "videojs-contrib-hls": ">= 0.8.4",
+    "request": ">= 2.40.0",
     "nodewebkit": ">= 0.10.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "chromium-args": "--proxy-server=http://localhost:4000/"
 }

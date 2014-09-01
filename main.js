@@ -5,4 +5,10 @@ console.log("Started throttler");
 var server = require('./lib/server');
 
 var gui = require('nw.gui');
-console.log(gui.App.getProxyForURL('http://www.google.se'));
+win = gui.Window.get();
+var nativeMenuBar = new gui.Menu({ type: "menubar" });
+nativeMenuBar.createMacBuiltin("Eyevinn Player");
+win.menu = nativeMenuBar;
+win.width = 850;
+win.height = 450;
+//console.log(gui.App.getProxyForURL('http://www.google.se'));

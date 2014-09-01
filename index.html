@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="eyevinnplayer">
   <head>
     <title>Eyevinn Player</title>
+    <!-- backend -->
+    <script src="main.js"></script>
+
     <link href="node_modules/video.js/dist/video-js/video-js.css" rel="stylesheet"> 
     <link href="css/tube.css" rel="stylesheet"> 
-    <script src="main.js"></script>
+    <link href="vendor/slider/css/slider.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+
 
     <script src="node_modules/video.js/dist/video-js/video.js"></script>
     <script src="node_modules/videojs-contrib-media-sources/src/videojs-media-sources.js"></script>
@@ -24,12 +31,15 @@
     <script src="node_modules/pkcs7/dist/pkcs7.unpad.js"></script>
     <script src="node_modules/videojs-contrib-hls/src/decrypter.js"></script>
     <script src="node_modules/videojs-contrib-hls/src/bin-utils.js"></script>
-        
+    
+    <script src="vendor/slider/js/bootstrap-slider.js"></script>    
+	        
     <style>
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
     }
+    html { overflow-y: scroll }
     .info {
       background-color: #eee;
       border: thin solid #333;
@@ -37,25 +47,48 @@
       padding: 0 5px;
       margin: 20px 0;
     }
+    .slider {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
     </style>
   </head>
-  <body>
-    <div id="videocontainer">
-      <video id="video" class="video-js vjs-default-skin tube-css" height="300" width="600" controls>
-        <source src="http://lo-wowza01.cloudapp.net:1935/vod/smil:Lonsamhet/playlist.m3u8" type="application/x-mpegURL">
-      </video>
+  <body ng-controller="mainController">
+    <div class="text-center">
+	  <h1>Eyevinn Player</h1>
+    </div>
+    <div class="row">
+      <div class="col-sm-10" id="videocontainer">
+        <video id="video" class="video-js vjs-default-skin tube-css" height="300" width="700" controls>
+          <source src="" type="application/x-mpegURL">
+        </video>
+      </div>
+      <div class="col-sm-2" id="slidercontainer">
+        <input type="text" class="slider" id="throttleslider" value="" 
+          data-slider-min="100" data-slider-max="8000" data-slider-step="100" 
+          data-slider-value="800" data-slider-orientation="vertical" 
+          data-slider-selection="before" 
+          data-slider-tooltip="show"></input>
+      </div>
     </div>
     <div id="playercontrols">
-      <form>
-        <input type="text" size="90" name="streamsrc" value="http://lo-wowza01.cloudapp.net:1935/vod/smil:Lonsamhet/playlist.m3u8"></input>
-        <input type="submit" value="Load"></input>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <div class="col-sm-10">
+            <input type="text" class="form-control" ng-model="formPlayer.stream"></input>
+          </div>
+          <button type="submit" class="col-sm-2 btn btn-primary btn-sm" ng-click="loadStream(videojs('video'))">Load</button>
+        </div>
       </form>
     </div>
     <script>
       videojs.options.flash.swf = 'node_modules/video.js/dist/video-js/video-js.swf';
-      // initialize the player
-      var player = videojs('video');
-      player.play();
+      var sl = $('#throttleslider').slider()
+        .on('slideStop', function(ev) {
+          setSpeed(sl.getValue());
+        })
+        .data('slider');
     </script>
+    <script src="app/core.js"></script>
   </body>
 </html>
