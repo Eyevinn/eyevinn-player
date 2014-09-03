@@ -33,7 +33,7 @@
     <script src="node_modules/videojs-contrib-hls/src/bin-utils.js"></script>
     
     <script src="vendor/slider/js/bootstrap-slider.js"></script>    
-	        
+	            
     <style>
     body {
       font-family: Arial, sans-serif;
@@ -66,7 +66,7 @@
       <div class="col-sm-2" id="slidercontainer">
         <input type="text" class="slider" id="throttleslider" value="" 
           data-slider-min="100" data-slider-max="8000" data-slider-step="100" 
-          data-slider-value="800" data-slider-orientation="vertical" 
+          data-slider-value="" data-slider-orientation="vertical" 
           data-slider-selection="before" 
           data-slider-tooltip="show"></input>
       </div>
@@ -81,14 +81,17 @@
         </div>
       </form>
     </div>
+    <script src="app/core.js"></script>
     <script>
       videojs.options.flash.swf = 'node_modules/video.js/dist/video-js/video-js.swf';
       var sl = $('#throttleslider').slider()
         .on('slideStop', function(ev) {
-          setSpeed(sl.getValue());
+          setSpeed(sl.getValue()*1000);
         })
         .data('slider');
+      getSpeed(function(speed) {
+        sl.setValue(speed/1000);
+      });
     </script>
-    <script src="app/core.js"></script>
   </body>
 </html>

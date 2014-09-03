@@ -11,4 +11,3 @@ nativeMenuBar.createMacBuiltin("Eyevinn Player");
 win.menu = nativeMenuBar;
 win.width = 850;
 win.height = 450;
-//console.log(gui.App.getProxyForURL('http://www.google.se'));

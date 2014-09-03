@@ -4,7 +4,7 @@
   "description": "Video player to test stream quality",
   "main": "app://host/index.html",
   "scripts": {
-    "start": "nodewebkit",
+    "start": "http_proxy=http://localhost:4000/ nodewebkit",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "window": {
@@ -27,5 +27,5 @@
     "nodewebkit": ">= 0.10.2"
   },
   "license": "MIT",
-  "chromium-args": "--proxy-server=http://localhost:4000/"
+  "chromium-args": ""
 }
