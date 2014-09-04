@@ -36,13 +36,14 @@ function mainController($scope, $http) {
 function loadVideo(stream) {
   var src = url.parse(stream);
   var sdata = { "source": src };
+  player.pause();
   request.put(apithrottle, { form: sdata }, function(err, resp, body) {
     var proxy = src;
     proxy.host = "localhost:4000";
     proxy.hostname = "localhost";  
     var proxystream = url.format(proxy);
+    console.log(proxystream);
     try {
-      player.pause();
       player.src([ { type: "application/x-mpegURL", src: proxystream } ]);
       player.play();
     } catch (err) {
