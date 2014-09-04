@@ -1,4 +1,6 @@
 var eyevinnPlayer = angular.module('eyevinnplayer', []);
+var url = require('url');
+var request = require('request');
 
 var player;
 var apithrottle = 'http://localhost:5000/api/throttler';
@@ -32,17 +34,24 @@ function mainController($scope, $http) {
 }
 
 function loadVideo(stream) {
-  try {
-    player.pause();
-    player.src([ { type: "application/x-mpegURL", src: stream } ]);
-    player.play();
-  } catch (err) {
-    console.log("Error: " + err);
-  }
+  var src = url.parse(stream);
+  var sdata = { "source": src };
+  request.put(apithrottle, { form: sdata }, function(err, resp, body) {
+    var proxy = src;
+    proxy.host = "localhost:4000";
+    proxy.hostname = "localhost";  
+    var proxystream = url.format(proxy);
+    try {
+      player.pause();
+      player.src([ { type: "application/x-mpegURL", src: proxystream } ]);
+      player.play();
+    } catch (err) {
+      console.log("Error: " + err);
+    }
+  });    
 }
 
 function getSpeed(callback) {
-  var request = require('request');
   var speed;
   request(apithrottle, function(err, resp, body) {
     var data = JSON.parse(body);

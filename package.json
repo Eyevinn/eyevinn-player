@@ -4,7 +4,7 @@
   "description": "Video player to test stream quality",
   "main": "app://host/index.html",
   "scripts": {
-    "start": "http_proxy=http://localhost:4000/ nodewebkit",
+    "start": "nodewebkit",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "window": {
@@ -15,7 +15,6 @@
   },
   "author": "Jonas Birme",
   "dependencies": {
-    "throttle": ">= 1.0.3",
     "url": ">= 0.10.1",
     "express": "~4.0.0",
     "body-parser": ">= 1.6.6",
@@ -24,6 +23,8 @@
     "videojs-contrib-media-sources": ">= 0.3.0",
     "videojs-contrib-hls": ">= 0.8.4",
     "request": ">= 2.40.0",
+    "stream": ">= 0.0.1",
+    "limiter": ">= 1.0.5",    
     "nodewebkit": ">= 0.10.2"
   },
   "license": "MIT",
