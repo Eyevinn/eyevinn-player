@@ -2,7 +2,7 @@ Eyevinn Player is a VideoJS based video player with the purpose to help you test
 the qualities of an adaptive stream in HLS. The video player includes a throttler
 where you can limit the bandwidth and watch how the encoded streams looks.
 
-![Screenshot of Player](/screenshot/eyevinn-player-screenshot1.png?raw=true "Screenshot")
+![Screenshot of Player](/screenshots/eyevinn-player-screenshot1.png?raw=true "Screenshot")
 
 ## Prerequisites:
 
