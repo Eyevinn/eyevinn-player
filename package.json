@@ -1,6 +1,6 @@
 {
   "name": "eyevinn-player",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Video player to test stream quality",
   "main": "app://host/index.html",
   "scripts": {
@@ -8,7 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "window": {
-    "toolbar": false
+    "toolbar": false,
+    "min_width": 770,
+    "min_height": 550
   },
   "webkit": {
     "plugin": true

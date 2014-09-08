@@ -1,7 +1,7 @@
 /*
 The MIT License (MIT)
 
-Copyright (c) 2014 Exceeds Your Expecations Vinn AB
+Copyright (c) 2014 Exceeds Your Expectations Vinn AB
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -33,5 +33,5 @@ win = gui.Window.get();
 var nativeMenuBar = new gui.Menu({ type: "menubar" });
 nativeMenuBar.createMacBuiltin("Eyevinn Player");
 win.menu = nativeMenuBar;
-win.width = 850;
-win.height = 450;
+win.width = 950;
+win.height = 550;

@@ -1,3 +1,26 @@
+<!--
+The MIT License (MIT)
+
+Copyright (c) 2014 Exceeds Your Expectations Vinn AB
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
 <!DOCTYPE html>
 <html ng-app="eyevinnplayer">
   <head>
@@ -50,20 +73,40 @@
     .slider {
       margin-left: 10px;
       margin-right: 10px;
+      margin-top: 20px;
+      margin-bottom: 20px;
     }
+    
+    .dark {
+      background-color: #000;
+    }
+    
+    .light {
+      background-color: #555;
+    }
+    
+    .title {
+      color: white;
+    }
+    
+    #streaminput {
+      margin-top: 5px;
+      margin-left: 10px;
+    }
+    
     </style>
   </head>
-  <body ng-controller="mainController">
-    <div class="text-center">
-	  <h1>Eyevinn Player</h1>
+  <body ng-controller="mainController" class="light">
+    <div class="text-center title">
+      <img src="img/logo-eyevinn.png"/>
     </div>
-    <div class="row">
+    <div class="row dark">
       <div class="col-sm-10" id="videocontainer">
-        <video id="video" class="video-js vjs-default-skin tube-css" height="300" width="700" controls>
+        <video id="video" class="video-js vjs-default-skin tube-css" height="380" width="100%" controls>
           <source src="" type="application/x-mpegURL">
         </video>
       </div>
-      <div class="col-sm-2" id="slidercontainer">
+      <div class="col-sm-2" id="slidercontainer" style="margin-top: 50px;">
         <input type="text" class="slider" id="throttleslider" value="" 
           data-slider-min="100" data-slider-max="8000" data-slider-step="100" 
           data-slider-value="" data-slider-orientation="vertical" 
@@ -71,13 +114,15 @@
           data-slider-tooltip="show"></input>
       </div>
     </div>
-    <div id="playercontrols">
+    <div class="row light" id="playercontrols">
       <form class="form-horizontal">
-        <div class="form-group">
+        <div class="form-group" id="streaminput">
           <div class="col-sm-10">
             <input type="text" class="form-control" ng-model="formPlayer.stream"></input>
           </div>
-          <button type="submit" class="col-sm-2 btn btn-primary btn-sm" ng-click="loadStream(videojs('video'))">Load</button>
+          <div class="col-sm-2">
+            <button type="submit" class="btn btn-primary btn-sm" ng-click="loadStream(videojs('video'))">Load</button>
+          </div>
         </div>
       </form>
     </div>
@@ -92,6 +137,9 @@
       getSpeed(function(speed) {
         sl.setValue(speed/1000);
       });
+      sl.formater = function(value) {
+        return value + " kbps";
+      };
     </script>
   </body>
 </html>

@@ -1,7 +1,7 @@
 /*
 The MIT License (MIT)
 
-Copyright (c) 2014 Exceeds Your Expecations Vinn AB
+Copyright (c) 2014 Exceeds Your Expectations Vinn AB
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -32,6 +32,7 @@ var apistream = 'http://localhost:5000/api/stream';
 
 function mainController($scope, $http) {
   $scope.formPlayer = {};
+  $scope.statusText = '';
   
   $http.get(apistream)
     .success(function(data) {
@@ -49,6 +50,10 @@ function mainController($scope, $http) {
       .error(function(data) {
         console.log("Error: " + data);
       });
+  };
+  
+  $scope.setStatusText = function(t) {
+    $scope.statusText = t;
   };
            
   videojs('video').ready(function() {
