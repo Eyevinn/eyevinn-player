@@ -32,7 +32,7 @@ Then you can start the player by running the following command:
 
 The MIT License (MIT)
 
-Copyright (c) 2014 Exceeds Your Expectations Vinn AB
+Copyright (c) 2014 Eyevinn Technology AB
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
